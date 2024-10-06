@@ -1,0 +1,110 @@
+Chapter74-objects: Prototypes
+
+1. what Are Prototypes?
+
+    Definition:
+
+    A Prototype in JavaScript is an object from which other objects inherit properties and 
+    methods. Every JavaScript object has a Prototype. The Prototype is also  an object.
+
+    Think of it as a blueprint for other objects. when you create an object , it inherits
+    features (properties and methods) from its Prototype.
+
+    Key Concept:
+
+    In JavaScript, all objects are linked to a Prototype object. This Prototype object can
+    hold methods and properties that can be shared among all objects that inherit from it.
+
+2. Why Use Prototypes?    
+
+    Memory Efficiency:
+
+    Instead of each object having its own copy of a method/property , all object can share the same 
+    method/property through the Prototypes.
+
+    inheritances:
+
+    Prototypes allow objects to inherit behavior from other objects.
+
+    Extensibility:
+
+    you can add new properties and methods to object even after they are created by 
+    attaching them to the Prototypes.
+
+3.How Do Prototype work?    
+
+   when you try access a property or method on an object , JavaScript first checks if  
+   that property or method exists on the object itself. if not , it checks the object's 
+   Prototype . if the Prototype doesn't have it , JavaScript keeps going up the chain of 
+   Prototype until it finds the property or reaches the end (null).
+
+   This is known as Prototype chaining.
+
+4. Example of Prototype   
+
+   Every object in JavaScript has a Prototype property , which is used to share methods/properties
+   across all instance of the object.
+
+//   Example: for prototype
+
+//   constructor function
+// function Person(name, age) {
+//     this.name = name;
+//     this.age = age;
+// }
+
+// // Adding a method to the Prototype
+// Person.prototype.greet = function() {
+//   console.log("Hello , my name is " + this.name + " and I am " +  this.age + " years old ");
+// };
+
+// var person1 = new Person("Alice" , 30);
+// var person2 = new Person("Bob" , 20);
+// person1.greet();
+// person2.greet();
+
+// // Adding property to the prototype 
+// Person.prototype.salary = 3000;
+// console.log(person1.salary);
+// console.log(person2.salary);
+
+   In  the example above , the greet  method is defined on the Person.prototype. Now , every 
+   Person object has access to this method without duplicating it for each object.
+
+5. Prototype inheritance   
+ 
+    JavaScript objects can inherit properties and methods from their prototype.
+    you can create a new object that inherit from another object , and the new object will
+    have access to all the properties and methods of the original object's prototype.
+
+6.Adding methods to Built-In object prototype
+
+   you can add methods to JavaScript's Built-In object Prototypes like Array, String , or
+   Number.
+
+   Example:
+
+   Array.prototype.first = function() {
+     return this[0];
+   };
+ 
+   var numbers = [1,2,3,4]; 
+   console.log(numbers.first());//output: 1;
+
+   Here, we added a new method first to all arrays , so any array can now call this method.
+
+7. Avoid Modifying Built-In Prototypes   
+
+    while you can add methods to Built-in Prototypes, it's generally not a good idea to
+    modify them because it can lead to unexpected behavior in your code or conflicts with
+    other scripts.
+
+8. Conclusion 
+     
+     Prototypes are a powerful feature in JavaScript that
+      allow you to share methods/properties 
+      between multiple objects and create objects 
+      that inherit from other objects.
+
+
+     
